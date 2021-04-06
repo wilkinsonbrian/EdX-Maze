@@ -106,20 +106,25 @@ public class Maze {
         // Learning concepts to work on:
         // array creation, initialization and traversing
         String[] rows = sMaze.split("\n");
-        MazeStatus[][] newMaze = new MazeStatus[rows.length][rows[0].toCharArray().length];
+        int colSize = rows[0].toCharArray().length;
+        MazeStatus[][] newMaze = new MazeStatus[rows.length][colSize];
 
         for (int r=0; r< rows.length; r++) {
             char[] columns = rows[r].toCharArray();
             for (int c=0; c<columns.length; c++) {
-                switch (c) {
+                switch (columns[c]) {
                     case ' ':
                         newMaze[r][c] = MazeStatus.OPEN;
+                        break;
                     case '#':
                         newMaze[r][c] = MazeStatus.OBSTACLE;
+                        break;
                     case 'x':
                         newMaze[r][c] = MazeStatus.GOAL;
+                        break;
                     case '.':
                         newMaze[r][c] = MazeStatus.VISITED;
+                        break;
                 }
             }
         }
